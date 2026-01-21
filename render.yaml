@@ -1,0 +1,36 @@
+services:
+  # Type of service to deploy
+  type: web
+  
+  # Name of your service
+  name: mydreams-backend
+  
+  # Runtime environment
+  runtime: java
+  
+  # Plan to use (free or paid)
+  plan: free
+  
+  # Build configuration
+  buildCommand: "./mvnw clean package -DskipTests"
+  
+  # Start command
+  startCommand: "java -jar target/backend-1.0.0.jar --spring.profiles.active=prod"
+  
+  # Environment variables (none needed - everything hardcoded)
+  env:
+    - key: JAVA_VERSION
+      value: 17
+  
+  # Health check path
+  healthCheckPath: /actuator/health
+  
+  # Auto-deploy on git push
+  autoDeploy: true
+  
+  # Number of instances
+  numInstances: 1
+  
+  # Disk size in MB
+  disk:
+    sizeGB: 1
